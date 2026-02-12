@@ -3,35 +3,52 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-const courseTitle="React";
-
-const student={
-  name:"Yesmine",
-  age:21,
-  track:"Development"
-}
-function sayHello(){
-  return 'Hello,${studentName}!';
-}
-
-function App() {
-  const studentName="Yesmine" ;
-return (
-  <div>
-      <h1> Yesmine's first element </h1>
-      <p>Student Name: {studentName}</p>
-      <p>Course: {courseTitle}</p>
-      <p>Welcome to {courseTitle}, {studentName}!</p>
-      <label htmlFor="nameInput">Your Name:</label>
-      <input id="nameInput" type="text" />
-      <p>Name: {student.name}</p>
-      <p>Age: {student.age}</p>
-      <p>Track: {student.track}</p>
-      <p>{sayHello()}</p>
-      <p>I understand how JSX allows me to combine JavaScript with HTML</p>
-      <p>Nothing, i understand everything</p>
-      <p>Where to define a function</p>
-  </div>
-);
+const list =[    //array of objects
+  {
+    title: "React ",
+    url:"https://reactjs.org/",
+    author:"Jordan",
+    num_comments:3,
+    points:4,
+    objectID:0,
+  },
+  {
+    title: "Redux ",
+    url: "https://redux.js.org/",
+    author: "Dan",
+    num_comments: 2,
+    points: 5,
+    objectID: 1,
+  },
+  {
+    title: "new story",
+    url:"https://newstory.js.org/",
+    author:"yesmine",
+    num_comments: 6,
+    objectID: 2,
+  }
+];
+list[2].points=list[2].points+1;
+function App() { //component 
+  return (
+    <div>
+      <h1>My Hacker Stories</h1>
+      <label htmlFor="search">Search: </label>
+      <input id="search" type="text" />
+      <hr />
+      <ul>
+        {list.map(function (item) { //map iterates  
+        return(
+          <li key={item.objectID}> 
+            <span> <a href={item.url}>{item.title}</a> </span>
+            <span> {item. author} </span>
+            <span> {item.num_comments} </span>
+            <span> {item. points}</span> 
+          </li>
+        );
+        })}
+      </ul>
+    </div>
+  );
 }
 export default App
